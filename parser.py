@@ -80,20 +80,36 @@ def parse_file( fname, edges, polygons, csystems, screen, color ):
             c+= 1
             args = lines[c].strip().split(' ')
         if line == 'push':
+<<<<<<< HEAD
             t=csystems[len(csystems)-1]
             csystems.append(t)
             c-=1
 	elif line == 'pop':
             csystems.pop()
             c-=1
+=======
+            t=csystems[0]
+            temp=[t]
+	    for i in csystems:
+		temp.append(i)
+	    csystems=copy.deepcopy(temp)
+            print(csystems)
+        elif line == 'pop':
+	    csystems.pop(0)
+>>>>>>> 2bf27d524877ae55a86b17ba06b206daedb9b050
 
         elif line == 'sphere':
             #print 'SPHERE\t' + str(args)
             add_sphere(polygons,
                        float(args[0]), float(args[1]), float(args[2]),
                        float(args[3]), step_3d)
+<<<<<<< HEAD
             matrix_mult(csystems[-1],polygons)
             draw_polygons(polygons, screen, color)
+=======
+	    matrix_mult(csystems[0],polygons)
+	    draw_polygons(polygons, screen, color)
+>>>>>>> 2bf27d524877ae55a86b17ba06b206daedb9b050
 	    polygons=[]
 
         elif line == 'torus':
@@ -101,7 +117,11 @@ def parse_file( fname, edges, polygons, csystems, screen, color ):
             add_torus(polygons,
                       float(args[0]), float(args[1]), float(args[2]),
                       float(args[3]), float(args[4]), step_3d)
+<<<<<<< HEAD
             matrix_mult(csystems[-1],polygons)
+=======
+            matrix_mult(csystems[0],polygons)
+>>>>>>> 2bf27d524877ae55a86b17ba06b206daedb9b050
             draw_polygons(polygons, screen, color)
             polygons=[]
 
@@ -110,7 +130,11 @@ def parse_file( fname, edges, polygons, csystems, screen, color ):
             add_box(polygons,
                     float(args[0]), float(args[1]), float(args[2]),
                     float(args[3]), float(args[4]), float(args[5]))
+<<<<<<< HEAD
             matrix_mult(csystems[-1],polygons)
+=======
+            matrix_mult(csystems[0],polygons)
+>>>>>>> 2bf27d524877ae55a86b17ba06b206daedb9b050
             draw_polygons(polygons, screen, color)
             polygons=[]
 
@@ -119,7 +143,11 @@ def parse_file( fname, edges, polygons, csystems, screen, color ):
             add_circle(edges,
                        float(args[0]), float(args[1]), float(args[2]),
                        float(args[3]), step)
+<<<<<<< HEAD
             matrix_mult(csystems[-1],edges)
+=======
+            matrix_mult(csystems[0],edges)
+>>>>>>> 2bf27d524877ae55a86b17ba06b206daedb9b050
             draw_lines(edges, screen, color)
             edges=[]
 
@@ -131,7 +159,11 @@ def parse_file( fname, edges, polygons, csystems, screen, color ):
                       float(args[4]), float(args[5]),
                       float(args[6]), float(args[7]),
                       step, line)
+<<<<<<< HEAD
             matrix_mult(csystems[-1],edges)
+=======
+            matrix_mult(csystems[0],edges)
+>>>>>>> 2bf27d524877ae55a86b17ba06b206daedb9b050
             draw_lines(edges, screen, color)
             edges=[]
 
@@ -140,7 +172,11 @@ def parse_file( fname, edges, polygons, csystems, screen, color ):
             add_edge( edges,
                       float(args[0]), float(args[1]), float(args[2]),
                       float(args[3]), float(args[4]), float(args[5]) )
+<<<<<<< HEAD
             matrix_mult(csystems[-1],edges)
+=======
+            matrix_mult(csystems[0],edges)
+>>>>>>> 2bf27d524877ae55a86b17ba06b206daedb9b050
             draw_lines(edges, screen, color)
             edges=[]
             
@@ -154,8 +190,13 @@ def parse_file( fname, edges, polygons, csystems, screen, color ):
         elif line == 'move':
             #print 'MOVE\t' + str(args)
             t = make_translate(float(args[0]), float(args[1]), float(args[2]))
+<<<<<<< HEAD
             matrix_mult(csystems[-1], t )
             csystems[-1] = t
+=======
+            matrix_mult(csystems[0],t)
+
+>>>>>>> 2bf27d524877ae55a86b17ba06b206daedb9b050
         elif line == 'rotate':
             #print 'ROTATE\t' + str(args)
             theta = float(args[1]) * (math.pi / 180)
